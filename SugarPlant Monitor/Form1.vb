@@ -7,7 +7,7 @@ Public Class Form1
 
     Private Async Function GetData(wallet As String, Optional pass As String = "nopass") As Task(Of PoolData)
         Try
-            Dim url As String = "https://api.pool.rplant.xyz/api/poolminer2/sugarchain/" & wallet
+            Dim url As String = "https://pool.rplant.xyz/api/poolminer2/sugarchain/" & wallet
             Dim resp = Await url.WithClient(SClient).PostJsonAsync(New With {Key .password = pass})
             Dim strResp = Await resp.GetStringAsync()
             Dim jResp = JsonConvert.DeserializeObject(Of PoolData)(strResp)
